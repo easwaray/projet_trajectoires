@@ -1,36 +1,36 @@
-function [t,x] = TraceXZ;
+function [t,x] = principal_deterministe;
 time= cputime;
-variables;
-%global Xin
-%Trace 3D la trajectoire d'un objet sphÈrique dans un ecoulement
-%Le bloc suivant lit le fichier CFD et crÈÈ les interpolants pour la
+variables_sphere;
+global Xin
+%Trace 3D la trajectoire d'un objet sph√©rique dans un ecoulement
+%Le bloc suivant lit le fichier CFD et cr√©√© les interpolants pour la
 %vitesse
 
  global Points_U Points_V Points_W %Xin
 
-A = csvread(filename,1,0);
-
-Pts = [A(:,24) A(:, 25) A(:, 26)]  ; % tableau des coordonn√©es des points du maillage
-
-Mat_Vx =(A(:,2))./(A(:,1)); %vecteur colonne contenant les vitesses U en chaque point du maillage
-
-Points_U = scatteredInterpolant(Pts, Mat_Vx, method); %interpolant de la vitesse U
-
-Mat_Vy =(A(:,3))./(A(:,1)); %vecteur colonne contenant les vitesses V en chaque point du maillage
-
-Points_V = scatteredInterpolant(Pts, Mat_Vy, method); %interpolant de la vitesse V
-
-Mat_Vz =(A(:,4))./(A(:,1)); %vecteur colonne contenant les vitesses W en chaque point du maillage
-
-Points_W = scatteredInterpolant(Pts, Mat_Vz, method); %interpolant de la vitesse W
+% A = csvread(filename,1,0);
+% 
+% Pts = [A(:,24) A(:, 25) A(:, 26)]  ; % tableau des coordonn√É¬©es des points du maillage
+% 
+% Mat_Vx =(A(:,2))./(A(:,1)); %vecteur colonne contenant les vitesses U en chaque point du maillage
+% 
+% Points_U = scatteredInterpolant(Pts, Mat_Vx, method); %interpolant de la vitesse U
+% 
+% Mat_Vy =(A(:,3))./(A(:,1)); %vecteur colonne contenant les vitesses V en chaque point du maillage
+% 
+% Points_V = scatteredInterpolant(Pts, Mat_Vy, method); %interpolant de la vitesse V
+% 
+% Mat_Vz =(A(:,4))./(A(:,1)); %vecteur colonne contenant les vitesses W en chaque point du maillage
+% 
+% Points_W = scatteredInterpolant(Pts, Mat_Vz, method); %interpolant de la vitesse W
 %}
-%La suite rÈsoud le systËme diffÈrentiel et trace les graphes dÈsirÈs
+%La suite r√©soud le syst√®me diff√©rentiel et trace les graphes d√©sir√©s
 %vecteur du temps de simulation
 xspan=[0.0:deltat:tmax] ;  
 
 %ODE numerical solution:
  %options = odeset('OutputFcn',@odeplot);
-[t, x]=ode23('Shimoi2', xspan, Xin);
+[t, x]=ode23('equations_physiques', xspan, Xin);
 
 %Mise des resultats sous forme graphique
 
