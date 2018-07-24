@@ -1,4 +1,4 @@
-function [Rq] = Rq(q1,q2,q3,q4)
+function [Rq] = Matrice_de_passage(q1,q2,q3,q4)
 
 Rq=zeros(3,3);
 
