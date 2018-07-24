@@ -1,4 +1,4 @@
-function [ dx ] = rotquaternion( t,x )
+function [ dx ] = equations_quaternions( t,x )
 %rotquaternion test ode solution for rotating quaternion
 %   Detailed explanation goes here
 % x(1,2,3) contains P, Q, R
