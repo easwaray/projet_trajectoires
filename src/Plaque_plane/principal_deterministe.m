@@ -1,45 +1,45 @@
 function [t,x ] = main; 
 time=cputime;
 variables_plaque;
-%Le bloc suivant lit le fichier CFD et crée les interpolants pour la vitesse
+%Le bloc suivant lit le fichier CFD et crÃ©e les interpolants pour la vitesse
 
 global Points_U Points_V Points_W  Xin
 
 
-% A = csvread(filename,1,0);
-% 
-% Pts = [A(:,24) A(:, 25) A(:, 26)]  ; % tableau des coordonnees des points du maillage
-% 
-% Mat_Vx =(A(:,2))./(A(:,1)); %vecteur colonne contenant les vitesses U en chaque point du maillage
-% 
-% Points_U = scatteredInterpolant(Pts, Mat_Vx, method); %interpolant de la vitesse U
-% 
-% Mat_Vy =(A(:,3))./(A(:,1)); %vecteur colonne contenant les vitesses V en chaque point du maillage
-% 
-% Points_V = scatteredInterpolant(Pts, Mat_Vy, method); %interpolant de la vitesse V
-% 
-% Mat_Vz =(A(:,4))./(A(:,1)); %vecteur colonne contenant les vitesses W en chaque point du maillage
-% 
-% Points_W = scatteredInterpolant(Pts, Mat_Vz, method); %interpolant de la vitesse W
+A = csvread(filename,1,0);
+
+Pts = [A(:,24) A(:, 25) A(:, 26)]  ; % tableau des coordonnees des points du maillage
+
+Mat_Vx =(A(:,2))./(A(:,1)); %vecteur colonne contenant les vitesses U en chaque point du maillage
+
+Points_U = scatteredInterpolant(Pts, Mat_Vx, method); %interpolant de la vitesse U
+
+Mat_Vy =(A(:,3))./(A(:,1)); %vecteur colonne contenant les vitesses V en chaque point du maillage
+
+Points_V = scatteredInterpolant(Pts, Mat_Vy, method); %interpolant de la vitesse V
+
+Mat_Vz =(A(:,4))./(A(:,1)); %vecteur colonne contenant les vitesses W en chaque point du maillage
+
+Points_W = scatteredInterpolant(Pts, Mat_Vz, method); %interpolant de la vitesse W
 
 
-%La suite résoud le système différentiel et trace les graphes désirés
+%La suite rÃ©soud le systÃ¨me diffÃ©rentiel et trace les graphes dÃ©sirÃ©s
 %this function solve ODE(ordinary differential equation) for rotation angle using quaternion
  
 %note: le pas de temps est variable dans ode23
 
-%vecteur du temps de simulation (intervalle d'intégration)
+%vecteur du temps de simulation (intervalle d'intÃ©gration)
 tspan=[0.0:deltat:tmax]; 
 
 %ODE numerical solution:
  %options = odeset('OutputFcn',@odeplot); %Routine des options odeplot
- %permet de tracer tous les résultats en fonction du temps et OutputFcn permet génère les "sorties" (graphiques, etc...)
+ %permet de tracer tous les rÃ©sultats en fonction du temps et OutputFcn permet gÃ©nÃ¨re les "sorties" (graphiques, etc...)
   
-%Résolution des équations spécifiées dans Plaque_plane_6DDL
-[t, x]=ode23('Plaque_plane_6DDL', tspan, Xin); % choix de ode23 (Runge Kutta) pour la résolution avec 10^-4 d'erreur par défaut
+%RÃ©solution des Ã©quations spÃ©cifiÃ©es dans Plaque_plane_6DDL
+[t, x]=ode23('equations_physiques', tspan, Xin); % choix de ode23 (Runge Kutta) pour la rÃ©solution avec 10^-4 d'erreur par dÃ©faut
 
 
-%tracé de la trajectoire
+%tracÃ© de la trajectoire
 taille=size(x,1);
 
 p1=x(:,8);
@@ -77,7 +77,7 @@ grid on;
 hold off
 end
 
-% les 2 graphes suivants permettent au choix de tracer d'autres paramètres
+% les 2 graphes suivants permettent au choix de tracer d'autres paramÃ¨tres
 %{
 figure(3)
 hold on
@@ -113,7 +113,7 @@ Phi=zeros(taille,1);
 Theta=zeros(taille,1);
 Psi=zeros(taille,1);
 for i = 1:(taille)
-    X(i,1)=x(i,8); %le 1 à gauche indique que c'est un vecteur colonne, le 8 à droite est celui deéfini
+    X(i,1)=x(i,8); %le 1 Ã  gauche indique que c'est un vecteur colonne, le 8 Ã  droite est celui deÃ©fini
     Y(i,1)=x(i,10); % dans Plaque_plane_6DDL 
     Z(i,1)=x(i,12);
     U(i,1)=x(i,9);
@@ -173,7 +173,7 @@ if choix_moment == 2
     W1=zeros(taille,1);
     for i=1:(taille)
         if L/l == 1
-W0=0.64*sqrt(UB(i,1).^2+UB(i,2).^2+UB(i,3).^2)/L; %W0 = 0.32*2V/L plaque carrée
+W0=0.64*sqrt(UB(i,1).^2+UB(i,2).^2+UB(i,3).^2)/L; %W0 = 0.32*2V/L plaque carrÃ©e
 W1=0.64*sqrt(UB(i,1).^2+UB(i,2).^2+UB(i,3).^2)/L;
 end
 if L/l == 2
