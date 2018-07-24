@@ -1,4 +1,4 @@
-function [x, y, z]=quat2euler(q1,q2,q3,q4)
+function [x, y, z]=angles_euler(q1,q2,q3,q4)
 % convert quaternion angle to euler angle
         %compute theta in radian
         y= asin(-2.*(q2.*q4-q1.*q3));
