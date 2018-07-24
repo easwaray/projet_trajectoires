@@ -1,4 +1,4 @@
-function [alpha,beta] = alpha_plaque(u,v,w, vf,vyf,wf)
+function [alpha,beta] = angles_plaque(u,v,w, vf,vyf,wf)
 % Compute the relative velocity of the particule
 
 % first, compute relative velocity component
@@ -7,7 +7,7 @@ vyrel=vyf-v;
 wrel=wf-w;
 
 vrel=sqrt(urel^2+vyrel^2+wrel^2);
-% angles du vent relatif en degrés
+% angles du vent relatif en degrÃ©s
 
 
 alpha =asind(wrel/vrel);
