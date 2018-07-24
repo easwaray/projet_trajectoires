@@ -1,4 +1,4 @@
-function [alpha,betha] = alpha(u,v, w, vf,vyf, wf)
+function [alpha,betha] = angles_sphere(u,v, w, vf,vyf, wf)
 % Compute the relative velocity of the particule
 
 % first, compute relative velocity components
