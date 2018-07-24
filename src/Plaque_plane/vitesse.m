@@ -1,4 +1,4 @@
-function  [Uq] = velocity(Xq, Yq, Zq, component) %fonction qui renvoie les composantes de vitesse aux points (Xq, Yq, Zq) connaissant les vitesses 
+function  [Uq] = vitesse(Xq, Yq, Zq, component) %fonction qui renvoie les composantes de vitesse aux points (Xq, Yq, Zq) connaissant les vitesses 
 %aux points du maillage
 global Points_U Points_V Points_W
 
