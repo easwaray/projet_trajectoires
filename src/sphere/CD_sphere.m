@@ -1,5 +1,5 @@
-function out = CD_sp(Re)
-% Calcul du coefficient de trainée de la sphère
+function out = CD_sphere(Re)
+% Calcul du coefficient de trainÃ©e de la sphÃ¨re
 % IN : Re
 % OUT : CD (different from previous CD_sp function
 % D'apres Bubbles, Drops, and Particle p112 table 5.2 a,b par Clift Grace &
