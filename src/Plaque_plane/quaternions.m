@@ -1,4 +1,4 @@
-function [ q1,q2,q3,q4 ] = Euler2quat( psi, theta, phi )
+function [ q1,q2,q3,q4 ] = quaternions( psi, theta, phi )
 %compute quaternion values q1, q2, q3, q4 from Euler angle
 %   x(1)=q1, x(2)=q2, x(3)=q3, x(4)=q4
 % see Suarez(Wichita) work, equation B17 to B18
