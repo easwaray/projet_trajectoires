@@ -1,9 +1,9 @@
-function [Vq]=initialisation_Cn(SR)
-%On initialise le coefficient Cn afin de pas le refaire à chaque itérations
+function [Vq]=initialisation_CN(SR)
+%On initialise le coefficient Cn afin de pas le refaire Ã  chaque itÃ©rations
 %pour gagner en temps de calcul
 
-%On commence par importer les données correspondant au ratio SR donné en
-%entrée
+%On commence par importer les donnÃ©es correspondant au ratio SR donnÃ© en
+%entrÃ©e
 if SR == 1
     M = importdata('sr1.txt');
 elseif SR==2
@@ -12,7 +12,7 @@ elseif SR == 4
     M = importdata('sr4.txt');
 end
 
-%La première et troisième colonne correspondent aux angles d'attaque et
+%La premiÃ¨re et troisiÃ¨me colonne correspondent aux angles d'attaque et
 %d'inclinaison
 alp = M(:,1);
 bet = M(:,3);
