@@ -1,4 +1,4 @@
-function  [Fz_sp] = ForceZ1_sphere(Vf,vyf, Wf,rhoair,muair,u,v,w,dsp,alpha)
+function  [Fz_sp] = ForceZ_sphere(Vf,vyf, Wf,rhoair,muair,u,v,w,dsp,alpha)
 
 % Sphere static drag equations
 % Calcul de la force selon Z
@@ -12,7 +12,7 @@ vrel=sqrt((Vf-u).^2 + (vyf-v).^2 + (Wf-w).^2 );
 Re=rhoair*dsp*vrel/muair;
 
 % compute de drag coefficient and lift
-Cd = CD_sp(Re);
+Cd = CD_sphere(Re);
 Cl = 0.0d0;
 
 
