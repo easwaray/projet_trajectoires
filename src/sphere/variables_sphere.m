@@ -1,12 +1,12 @@
-filename = 'Clip_BWB08.csv'; %Fichier CFD donnant l'écoulement
+filename = 'Clip_BWB08.csv'; %Fichier CFD donnant l'Ã©coulement
 B = csvread('surface_BWB.csv',1,0);
 BWB=alphaShape(B(:,24), B(:,25), B(:,26),2);
 
-method = 'linear'; % Méthode d'interpolation pour les vitesses
+method = 'linear'; % MÃ©thode d'interpolation pour les vitesses
 
 X_Plan = 20; %Abscisse (m) du plan de normale x dans lequel on veut visualiser l'intersection avec les trajectoires
 
-Xin=[14.36,-0.2,11.19,0,0.105,0.2,0,0]; %[X0;u0;Y0;v0;Z0;w0;tetha0;omega0];
+% Xin=[14.36,-0.2,11.19,0,0.105,0.2,0,0]; %[X0;u0;Y0;v0;Z0;w0;tetha0;omega0];
 
 %temps de simulation
 tmax=2;
@@ -14,7 +14,7 @@ tmax=2;
 %pas de temps
 deltat=0.01;
 
-g=9.81; %gravité
+g=9.81; %gravitÃ©
 
 rhoShimoi=57.25*0.45359237/(0.3048^3); % 917.0570 masse vol de la glace kg/m^3 annoncee par Koji Shimoi
 rhoPlastique=1120; % masse volumique du plastique(kg/m^3)
