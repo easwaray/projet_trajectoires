@@ -1,16 +1,16 @@
 function [Mb]=Moment_plaque_plane( L,l,P,Q,R,q1,q2,q3,q4,rhoair,u,v,w,vf,vyf,wf,Vq)
 
 
-%vitesse dans le repère de la plaque
-Ub=Rq(q1,q2,q3,q4)*[vf-u;vyf-v;wf-w];
+%vitesse dans le repÃ¨re de la plaque
+Ub=Matrice_de_passage(q1,q2,q3,q4)*[vf-u;vyf-v;wf-w];
 
 %centre de pression :
 C_p=centre_pression(q1,q2,q3,q4,u,v,w,vf,vyf,wf,L,l);
 
-%Force apliquée au centre de pression : 
-Fb=Rq(q1,q2,q3,q4)*Forces_plaque_plane(q1,q2,q3,q4,L,l,rhoair,u,v,w,vf,vyf,wf,Vq);
+%Force apliquÃ©e au centre de pression : 
+Fb=Matrice_de_passage(q1,q2,q3,q4)*Forces_plaque(q1,q2,q3,q4,L,l,rhoair,u,v,w,vf,vyf,wf,Vq);
 
-%Moment de la force appliquée au centre de pression :
+%Moment de la force appliquÃ©e au centre de pression :
 Mf=cross(C_p,Fb);
 
 %Damping moment (moment d'amortissement)
