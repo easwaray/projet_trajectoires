@@ -1,4 +1,4 @@
-function [ dx ] = Plaque_plane_6DDL ( t,x )
+function [ dx ] = equations_physiques ( t,x )
 
 variables_plaque;
 %rotquaternion test ode solution for rotating quaternion
@@ -26,16 +26,16 @@ variables_plaque;
 % dx(1,2,3) acceleration angulaire  en x, y, z
 % dx(4,5,6,7) derivative of q1, q2, q3, q4
 
-Vf= velocity(x(8),x(10),x(12),1);
-Vyf= velocity(x(8),x(10),x(12),2);
-Wf = velocity(x(8),x(10),x(12),3);
+Vf= vitesse(x(8),x(10),x(12),1);
+Vyf= vitesse(x(8),x(10),x(12),2);
+Wf = vitesse(x(8),x(10),x(12),3);
 
 
-%[alpha,beta]=alpha_plaque(x(9),x(11),x(13),Vf,Vyf,Wf);
+%[alpha,beta]=angles_plaque(x(9),x(11),x(13),Vf,Vyf,Wf);
 
 
 %compute the forces 
-F=Forces_plaque_plane(x(4),x(5),x(6),x(7),L,l,rhoair,x(9),x(11),x(13),Vf,Vyf,Wf,Vq);
+F=Forces_plaque(x(4),x(5),x(6),x(7),L,l,rhoair,x(9),x(11),x(13),Vf,Vyf,Wf,Vq);
 
 %compute the moment of the plate 
 if choix_moment == 1 
@@ -67,8 +67,8 @@ dx(7,1)=0.5*(x(4)*x(3)+x(5)*x(2)-x(6)*x(1))+ lambda*x(7);
 dx(14,1)=x(1);
 dx(15,1)=x(2);
 dx(16,1)=x(3);
-%[x(16), x(15), x(14)]= quat2euler(x(4), x(5), x(6), x(7));
-[x(4), x(5), x(6), x(7)]=Euler2quat(x(14), -x(15), -x(16));
+%[x(16), x(15), x(14)]= angles_euler(x(4), x(5), x(6), x(7));
+[x(4), x(5), x(6), x(7)]=quaternions(x(14), -x(15), -x(16));
 
 %trajectoires
 dx(8,1)=x(9);
